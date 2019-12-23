@@ -1,0 +1,91 @@
+.products-title{
+    width: 100%;
+    height: 50vh;
+    background-image: url('../img/prefa_section.jpg');
+    background-size: cover;
+    background-repeat: none;
+    background-position: center;
+    .container{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1{
+            color: $green-novo;
+            font-weight: 700;
+        }
+    }
+}
+
+.products-content{
+    padding: 6rem 8rem;
+    .products-filter{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+        span,a{
+            padding: .5rem 1rem;
+            margin: 1rem;
+        }
+        span{
+            color: $gray-novo2;
+            font-weight: 500;
+        }
+        nav > .nav.nav-tabs{  border: none; }
+        nav > div a.nav-item.nav-link{
+            border: none;
+            color: rgba(77, 77, 77,.6);
+            text-decoration: none;
+            border-radius: 3px;
+            &.active{
+                background: rgba(143, 181, 43,1);
+                color: #fff;
+            }
+        }
+        
+        nav > div a.nav-item.nav-link:hover,
+        nav > div a.nav-item.nav-link:focus{
+            border: none;
+            background: rgba(143, 181, 43,1);
+            color:#fff;
+            transition:all 0.20s linear;
+            cursor: pointer;
+        }
+    }
+
+    .products{
+        .product-item{
+            padding:.5rem;
+            transition: all .5s;
+            .card[data-id="10"] {
+                h4{
+                    font-size: 14.8px;
+                    margin-bottom: 2.4rem;
+                }
+            }
+            .card{
+                text-align: center;
+                padding: 1.5rem;
+                justify-content: space-between;
+                .product-img{
+                    width: 100%;
+                    height: auto;
+                }
+                h4{
+                    font-weight: 400;
+                    text-transform: uppercase;
+                    font-size: 1.2rem;
+                    color: $gray-novo2;
+                    margin-bottom: 2rem;
+                }
+                .buttons{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    a{  margin-top: .5rem; }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="js/owl-2/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="js/chatWp/floating-wpp.min.css">
+    <link rel="stylesheet" href="css/font-awesome/css/all.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>NOVO - PRODUCTOS</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top green-nav">
+        <a class="navbar-brand" href="#">
+            <img src="img/svg/novo-fullw-logo.svg" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link ln-link" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link ln-link" href="nosotros.html">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link ln-link" href="productos.html">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link ln-link" href="#contacto">Contacto</a>
+                </li>
+                <li class="nav-item quote">
+                    <div class="nav-link">
+                        <a href="cotizar.html" class="link">
+                            <span class="d-lg-none">Cotizar</span>
+                            <img src="img/svg/calculator-icon.svg" alt="">
+                            <span class="quantity">2</span>
+                        </a>
+                        <div id="cot-box" class="cot-box">
+                            <table id="lista-carrito" class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Imagen</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- <tr>
+                                        <td><img src="img/products/products-mini/adoquines/adoquin_guia.png" alt=""></td>
+                                        <td>Adoquin peatonal 20x10x6</td>
+                                        <td><button id="delete" class="delete"><i class="fas fa-times"></i></button></td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                            <div class="btns-box">
+                                <a href="cotizar.html" class="btn-novo-two">Cotizar ahora</a>
+                                <a href="" id="vaciar-carrito" class="btn-novo-three">Vaciar carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item reciclados">
+                    <a class="nav-link" href="https://recicladosindustriales.co" target="_blank">
+                        <span>Una marca de</span>
+                        <img id="logo-reciclados" class="d-none d-lg-block" src="img/svg/reciclados-wg-logo.svg" alt="">
+                        <img class="d-block d-lg-none" src="img/svg/reciclados-fullw.svg" alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Boton WP -->
+	<div class="floating-wpp"></div>
+
+    <div class="product-title">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 id="product-title"></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div id="product-content" class="row product-content">
+            <!-- <div class="col-lg-6 description">
+                <h4>Descripción</h4>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius neque unde sint similique rem dicta, corporis optio et alias placeat, laudantium sunt nam vel commodi.</p>
+                <ul>
+                    <li><span>Textura:</span>helper.texture</li>
+                    <li><span>Resistencia:</span>helper.resistance</li>
+                    <li><span>Norma aplicada:</span>helper.rules</li>
+                </ul>
+
+                <a class="btn-novo-one" href="">Agregar a cotizar</a>
+            </div>
+            <div class="col-lg-6 product">
+                <img class="product-img" src="img/products/adoquines/adoquin_guia.png" alt="">
+                <hr>
+                <div class="features">
+                    <div class="feature-item" data-toggle="tooltip" data-placement="top" data-html="true" title=" Peso unitario </br> Kilogramos / Unidades">
+                        <img src="img/svg/weight-icon.svg" alt="">
+                        99 kg/und
+                    </div>
+                    <div class="feature-item" data-toggle="tooltip" data-placement="top" data-html="true" title=" Medidas </br> Largo x Ancho x Alto </br> Centimetros">
+                        <img src="img/svg/measure-icon.svg" alt="">
+                        80x20x35 cm
+                    </div>
+                    <div class="feature-item" data-toggle="tooltip" data-placement="top" data-html="true" title="Perfil de rendimiento </br> Unidades / Metro </br> cuadrado">
+                        <img src="img/svg/efficiency.svg" alt="">
+                        1,25 und/ml
+                    </div>
+                </div>
+                <p>Colores:</p>
+                <div class="colors">
+                    <a class="color" href="#" style="background: #ABABA9;"></a>
+                    <a class="color" href="#" style="background: #695850;"></a>
+                    <a class="color" href="#" style="background: #96723A;"></a>
+                    <a class="color" href="#" style="background: #7B2A2F;"></a>
+                    <a class="color" href="#" style="background: #332A2F;"></a>
+                    <a class="color" href="#" style="background: #925831;"></a>
+                    <a class="color" href="#" style="background: #566A28;"></a>
+                    <a class="color" href="#" style="background: #456780;"></a>
+                </div>
+                <p class="note">*Los colores y texturas se aproximan al producto que está en nuestro portafolio.</p>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="proyects">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Proyectos</h2>
+                    <div class="owl-carousel owl-theme owl-proyects">
+                        <div class="item">
+                            <img src="img/proyects/1.jpg" alt="">
+                            <h6>Lorem ipsum</h6>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nam corporis consequatur.</p>
+                        </div>
+                        <div class="item">
+                            <img src="img/proyects/2.jpg" alt="">
+                            <h6>Lorem ipsum</h6>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nam corporis consequatur.</p>
+                        </div>
+                        <div class="item">
+                            <img src="img/proyects/3.jpg" alt="">
+                            <h6>Lorem ipsum</h6>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nam corporis consequatur.</p>
+                        </div>
+                        <div class="item">
+                            <img src="img/proyects/4.jpg" alt="">
+                            <h6>Lorem ipsum</h6>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nam corporis consequatur.</p>
+                        </div>
+                        <div class="item">
+                            <img src="img/proyects/5.jpg" alt="">
+                            <h6>Lorem ipsum</h6>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nam corporis consequatur.</p>
+                        </div>
+                        <div class="item">
+                            <img src="img/proyects/6.jpg" alt="">
+                            <h6>Lorem ipsum</h6>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nam corporis consequatur.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contacto" class="container contact">
+        <div class="row">
+            <div class="col-12 title">
+                <h2>Contáctanos</h2>
+                <img class="line-separator" src="img/svg/separating-line-black.svg" alt="">
+            </div>
+        </div>
+
+        <div class="row contact-info">
+            <div class="col-md-6 contact-data">
+                <h3 class="contact-title">Póngase en contacto con nosotros</h3>
+                <p class="contact-txt">Un miembro de nuestro equipo se pondrá en contacto con usted lo más pronto posible.</p>
+                <h3 class="contact-title">Telefono:</h3>
+                
+                <div class="phone">
+                    <img src="img/svg/phone-icon.svg" alt="">
+                    <p>Contacto administrativo: <br> (+57 1) 875 9047 - 896 6879</p>
+                </div>
+                <div class="phone">
+                    <img src="img/svg/cellphone-icon.svg" alt="">
+                    <p>Contacto comercial: <br> (+57) 318 215 3129</p>
+                </div>
+                <div class="phone">
+                    <img src="img/svg/cellphone-icon.svg" alt="">
+                    <p>Contacto técnico de planta: <br> (+57) 317 498 3395</p>
+                </div>
+                <h3 class="contact-title">Dirección:</h3>
+                <p class="contact-txt">km 1 - Costado Sur Vía Siberia - Tenjo. Cundinamarca.</p>
+            </div>
+
+            <div class="col-md-6 contact-form">
+                <form id="formularioContacto" action="">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" id="inputName"  placeholder="Nombre: *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email: *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="phone" class="form-control" id="inputPhone" placeholder="Telefono: *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="company" class="form-control" id="inputWork" placeholder="Empresa:">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="position" class="form-control" id="inputPosition" placeholder="Cargo:">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="message" id="inputMessage" rows="8" placeholder="Mensaje: "></textarea>
+                    </div>
+                    
+                    <button id="submit" type="submit" class="btn btn-novo-one">Enviar</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row location">
+            <div class="col-md-5 location-title">
+                <img src="img/svg/location-green-icon.svg" alt="">
+                <h3>Ubicación planta</h3>
+            </div>
+            <div class="col-md-7 location-address">
+                <p>Km 1 - Costado Sur Via Siberia - Tenjo. Cundinamarca</p>
+            </div>
+            <div class="col-md-12 location-map">
+                <iframe class="map-styles" src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d9687.998657224499!2d-74.1585632697663!3d4.7627059040373565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x8e3f83c781077ea9%3A0xd1fdededb116be12!2sBogot%C3%A1+-+Tenjo%2C+Cota%2C+Cundinamarca!3m2!1d4.76867!2d-74.1564768!5e0!3m2!1ses!2sco!4v1559926426931!5m2!1ses!2sco" width="600" height="600" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+            </div>
+        </div>
+    </div>
+    
+    
+    <img class="footer-separator" src="img/svg/footer-separator.svg" alt="">
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <img class="logo-footer" src="img/svg/novo-wg-logo.svg" alt="">
+                </div>
+                <div class="col-12 footer-menu">
+                    <a href="#">Inicio</a>
+                    <a href="#">Nosotros</a>
+                    <a href="">Productos</a>
+                    <a href="">Cotizar</a>
+                </div>
+                <div class="col-12 social">
+                    
+                    <a href="#"><img class="social-icon" src="img/svg/facebook-icon.svg" alt=""></a>
+                
+                    <a href="#"><img class="social-icon" src="img/svg/twitter-icon.svg" alt=""></a>
+                
+                    <a href="#"><img class="social-icon" src="img/svg/instagram-icon.svg" alt=""></a>
+                
+                    <a class="reciclados-footer" href="https://recicladosindustriales.co" target="_blank">
+                        <span>Una marca de</span>
+                        <img id="logo-reciclados" class="" src="img/svg/reciclados-wg-logo.svg" alt="">
+                    </a>
+    
+                </div>
+                <div class="col-12 email">
+                    <p><img src="img/svg/mail-icon.svg" alt=""> info@novoecoprefabricados.com</p>
+                </div>
+                <div class="col-12">
+                    <img class="line-separator" src="img/svg/separating-line-white.svg" alt="">
+                </div>
+                
+            </div>
+        </div>
+        <div class="eal-copy">
+            <p>Copyright © 2019 All Right Reserved. Powered By En Algún Lugar</p>
+        </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/owl-2/owl.carousel.min.js"></script>
+    <script src="js/chatWp/floating-wpp.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script>new WOW().init();</script>
+    <script src="js/product.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/nav.js"></script>
+</body>
+</html>

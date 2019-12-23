@@ -1,0 +1,84 @@
+.cotizador{
+    padding-top: 10rem;
+    padding-bottom: 3rem;
+    .cotizador-title{
+        margin-bottom: 2rem;
+        h2{
+            color: $gray-novo3;
+            font-weight: 400;
+            text-align: center;
+        }
+    }
+    .title-info{
+        background: $green-novo;
+        padding: 1rem 0;
+        color: #fff;
+        font-weight: 600;
+    }
+    .products{
+        .cot-product{
+            padding: 3rem 0;
+            border-bottom: 1px solid $gray-novo3;
+            align-items: center;
+            .cot-img{
+                img{width: 50%;}
+            }
+            .cot-name{
+                color: $gray-novo3;
+                font-weight: 400;
+            }
+            .cot-description{
+                color: $gray-novo5;
+                font-weight: 100;
+            }
+            .cot-color{
+                .dropdown{
+                    .dropdown-toggle{
+                        .btn-colorselector{
+                            border-radius: 50%;
+                            width: 25px;
+                            height: 25px;
+                        }
+                        &:after{
+                            color: $gray-novo3;
+                            margin-left: .5rem;
+                        }
+                    }
+                    .dropdown-menu{
+                        li{
+                            .color-btn{ border-radius: 50%; }
+                        }
+                    }
+                }
+                .dropdown-colorselector>.dropdown-menu>li>.color-btn.selected:after{
+                    content: '\25CB';
+                    font-size: 16px;
+                    left: 1px;
+                }
+            }
+            .cot-delete{
+                display: flex;
+                justify-content: center;
+                .borrar-producto{
+                    border: none;
+                    width: 35px;
+                    height: 35px;
+                    background: #C3423F;
+                    color: #fff;
+                    border-radius: 50%;
+                    text-align: center;
+                    align-self: center;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+        .buttons{
+            width: 100%;
+            text-align: right;
+            margin-top: 2rem;
+            button{ margin:0 .4rem; }
+        }
+    }
+}

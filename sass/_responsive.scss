@@ -1,0 +1,442 @@
+@media(max-width:1024px){
+    nav{
+        &.navbar{
+            padding: 2rem;
+        }
+    }
+    
+    .home-products{
+        padding: 4rem 4rem;
+        h4 {font-size: 22px;}
+        .owl-home-products{
+            .owl-nav {
+                .owl-prev{
+                    left: 0rem;
+                }
+                .owl-next{
+                    right: 0rem;
+                }
+            }
+        }
+    }
+
+    .products-title{
+        height: 30vh;
+        .container{
+            h1{  margin-top: 4rem; }
+        }
+    }
+    .products-content{ padding: 2rem; }
+    .about-us{
+        padding: 2rem;
+        padding-bottom: 0;
+        .container-fluid{
+            .row{
+                .title{ padding-top: 6rem; }
+            }
+        }
+    }
+    
+    .about-description{
+        .row-one,.row-two{
+            .col-green{ padding: 3rem; }
+        }
+        .row-one{
+            .col-green{
+                .logo-novo{
+                    width: 240px;
+                    margin-bottom: 3rem;
+                }
+                svg{ right: -20%; }
+            }
+        }
+        .row-two{
+            .col-green{
+                img{
+                    max-width: 40px;
+                    max-height: 50px;
+                }
+                svg{ left: -20%; }
+            }
+        }
+    }
+
+    .product-title{ height: 25vh; }
+    
+    .product-content{
+        padding: 4rem;
+        .description{
+            p, ul{ font-size: 18px; }
+            ul{padding-left: 1.5rem;}
+
+        }
+        .product{
+            .features{
+                justify-content: space-between;
+                .feature-item{
+                    padding:.2rem;
+                    font-size: 14px;
+                    img{
+                        width: 25px;
+                        margin-right: .5rem;
+                    }
+                    &:nth-child(2){
+                        padding: 0 1rem;
+                        border-left: 1px solid $gray-novo5;
+                        border-right: 1px solid $gray-novo5;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:768px){
+    nav{
+        &.navbar{background: $green-novo;}
+        .navbar-nav{
+            margin-top: 1rem;
+            border-top: 1px solid #fff;
+            align-items: center;
+            .nav-item{
+                .nav-link{text-align: right;}
+                &.quote{
+                    .nav-link{
+                        img{
+                            margin: 0 .5rem;
+                        }
+                        .quantity{
+                            text-align: center;
+                            border-radius: 50%;
+                            padding:.1rem .5rem;
+                            background: #fff;
+                            color: $green-novo;
+                        }
+                    }
+                }
+                &.reciclados{
+                    border-top: 1px solid #fff;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    span{
+                        text-align: center;
+                        padding-bottom: .3rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .home-products{
+        padding: 1.5rem 1.5rem;
+        h4 {font-size: 18px;}
+        .owl-home-products{
+            .owl-nav {
+                .owl-prev,
+                .owl-next{
+                    width:25px;
+                    height:25px;
+                }
+            }
+        }
+    }
+
+    .products-title{
+        .container{
+            h1{  margin-top: 7rem; }
+        }
+    }
+    .products-content{ 
+        padding: 2rem;
+        .products-filter{
+            span,a{
+                padding: .2rem .8rem;
+                margin: 0rem;
+            }
+            
+            nav > div a.nav-item.nav-link:hover,
+            nav > div a.nav-item.nav-link:focus{
+                border: none;
+                background: rgba(143, 181, 43,1);
+                color:#fff;
+                transition:all 0.20s linear;
+            }
+        }
+    }
+
+    .product-title{ height: 20vh; }
+    
+    .product-content{
+        padding: 3rem;
+        .product{
+            .features{
+                justify-content: center;
+                .feature-item{
+                    font-size: 18px;
+                    img{ margin-right: 1rem; }
+                    &{ padding: 0 1rem; }
+                }
+            }
+        }
+    }
+
+    .allies{
+        padding: 3rem;
+        p{
+            padding-left: 2rem;
+            font-size: 26px;
+        }
+    }
+}
+
+@media(max-width:450px){
+    nav{
+        &.navbar{padding: 1rem;}
+        .navbar-nav{
+            margin-top: 1rem;
+            border-top: 1px solid #fff;
+            align-items: center;
+            .nav-item{
+                .nav-link{text-align: right;}
+                &.quote{
+                    .nav-link{
+                        border-radius: 5%;
+                        img{
+                            margin: 0 .5rem;
+                        }
+                        .quantity{
+                            text-align: center;
+                            border-radius: 50%;
+                            padding:.1rem .5rem;
+                            background: #fff;
+                            color: $green-novo;
+                        }
+                    }
+                }
+                &.reciclados{
+                    border-top: 1px solid #fff;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    span{
+                        text-align: center;
+                        padding-bottom: .3rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .owl-carousel {
+        .owl-slide {
+            .container-fluid{
+                padding: 6rem 1rem 8rem 1rem;
+            }
+        }
+        .owl-slide-title{
+            font-size: 30px;
+            margin-bottom: 1rem;
+        }
+        .owl-slide-subtitle {
+            font-size: 16px;
+            line-height: 22px;
+            margin-bottom: 1rem;
+        }
+        .owl-slide-cta.is-transitioned {
+            transition-delay: 0.5s;
+        }
+        
+        .owl-nav {
+            .owl-prev,
+            .owl-next{
+                width:30px;
+                height:30px;
+            }
+            .owl-prev{
+                left: .5rem;
+            }
+            .owl-next{
+                right: .5rem;
+            }
+        }
+
+        .btn-novo-one{
+            font-size: 16px;
+            padding: .25rem 1rem;
+        }
+    }
+
+    .home-products{
+        padding: 2rem .3rem;
+        h4 {text-align: center;}
+    
+    }
+
+    .about-us{
+        padding: 0rem;
+        .container-fluid{
+            .row{
+                .title{
+                    padding-top: 8rem;
+                    .nosotros{ font-size: 2.8rem; }
+                    .somos{ font-size: 4.5rem; }
+                    .novo{ font-size: 5.4rem; }
+                    .eco{
+                        font-size: 1.5rem;
+                        line-height: 2.8;
+                        color: $green-novo;
+                        font-weight: 700;
+                    }
+                }
+                .video{
+                    iframe{
+                        width: 90%;
+                        min-height: 300px;
+                    }
+                }
+            }
+        }
+    }
+    
+    .about-description{
+        .row-one,.row-two{
+            .col-green{ padding: 1rem; }
+        }
+        .row-one{
+            .col-green{
+                .logo-novo{
+                    margin-top: 3rem;
+                    margin-bottom: 3rem;
+                }
+            }
+        }
+    
+        .row-two{
+            .col-9{
+                padding-left: 0;
+            }
+        }
+    }
+    
+    .allies{
+        background: $gray-novo1;
+        padding:3rem 1rem;
+        text-align: center;
+        img{
+            width: 200px;
+            margin-bottom: 2rem;
+        }
+        p{
+            padding-left: 0rem;
+            font-size: 22px;
+            line-height: 28px;
+        }
+    }
+
+    .products-title{
+        .container{
+            h1{ font-size: 30px; }
+        }
+    }
+    .products-content{
+        .products-filter{
+            span,a{ padding: .4rem; }
+        }
+    }
+
+    .product-title{
+        padding-top: 4rem;
+        height: 25vh;
+        h1{ font-size: 30px; }
+    }
+    
+    .product-content{
+        padding: 2rem 0rem;
+        .description{
+            h4{font-size: 35px;}
+        }
+        .product{
+            .product-img{
+                width: 100%;
+            }
+            .features{
+                justify-content: center;
+                .feature-item{
+                    font-size: 16px;
+                    img{ 
+                        width: 30px;
+                        margin: 1rem 2rem; }
+                    &{ padding: 0; }
+                }
+            }
+        }
+    }
+
+    .contact{
+        padding-top: 3rem;
+        padding-bottom: 0rem;
+        .title{
+            h2{
+                font-size: 30px;
+                margin-bottom: 1rem;
+            }
+        }
+        .contact-info{
+            padding-top: 1rem;
+            .contact-data{
+                margin-bottom: 2rem;
+                .contact-title { font-size: 24px; }
+            }
+        }
+        .location{
+            .location-title{
+                margin-bottom: 1rem;
+                img { width: 36px; }
+                h3 { font-size: 26px; }
+            }
+            
+            .location-map{
+                .map-styles{
+                    height: 400px;
+                }
+            }
+        }
+    }
+
+    .footer-separator {top: 3px;}
+    
+    footer {
+        padding-top: 2rem;
+        .logo-footer,
+        .footer-menu,
+        .social,
+        .email {margin-bottom: 2rem;}
+    
+        .logo-footer {width: 120px;}
+        .footer-menu {
+            a{
+                font-size: 14px;
+                margin: 0 6px;
+            }
+        }
+        .social {
+            a {
+                margin: 0rem .4rem;
+                img {width: 26px;}
+            }
+        }
+        .email {
+            img {
+                width: 26px;
+                margin-right: 0;
+                margin-bottom: .5rem;
+            }
+        }
+        .eal-copy {
+            padding: 1rem 1rem;
+            font-weight: 300;
+            font-size: 14px;
+        }
+    }
+}
