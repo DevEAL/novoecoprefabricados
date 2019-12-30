@@ -51,22 +51,6 @@ $(document).ready(function(){
 
 });
 
-// const traerMiData = () => {
-//     const productData = fetch('./products.json')
-//         .then((res) => {
-//             return res.json();
-//         })
-//         .then((data) =>{ 
-//             return data;
-//         });
-//     return productData;
-// }
-
-// traerMiData().then(response => console.log(response));
-// let miData = [];
-// miData = traerMiData().then(response => (response));
-// console.log(miData);
-// miData.map(element => element.name);
 
 const productos2 = document.getElementById('products');
 loadEvents();
@@ -81,6 +65,13 @@ function agregarProducto(e){
         const producto = e.target.parentElement.parentElement;
         leerDatosProducto(producto);
     };
+}
+
+function actualizarCantidad() {
+    let productosLS = obtenerLocalStorage();
+    let counter = document.querySelector('.quantity');
+    let setCounter = productosLS.length;
+    counter.innerHTML= setCounter;
 }
 
 function leerDatosProducto(producto) {
@@ -99,6 +90,7 @@ function leerDatosProducto(producto) {
                             imagen: element.img,
                             descripcion: element.description,
                             color: element.color,
+                            hexa: element.hexa
                         }
                         insertarCarrito(infoProducto);
                     }
@@ -106,13 +98,21 @@ function leerDatosProducto(producto) {
             });
     }
     traerMiData();
+}
 
-    // const infoProducto = {
-    //     imagen: producto.querySelector('img').src,
-    //     titulo: producto.querySelector('h4').textContent,
-    //     id: producto.querySelector('a.agregar-carrito').getAttribute('data-id'),
-    // }
-    // insertarCarrito(infoProducto);
+function carritoSend() {
+    let productosLS = JSON.parse(localStorage.getItem('productos'));
+    let sendProducto = [];
+    productosLS.forEach((producto, index) => {
+        let send = {
+            id: producto.id,
+            nombre: producto.nombre,
+            color: 'Gris',
+            cantidad: '-49'
+        }
+        sendProducto.push(send);
+    });
+    localStorage.setItem('sendProductos', JSON.stringify(sendProducto));
 }
 
 function insertarCarrito(producto) {
@@ -124,6 +124,8 @@ function insertarCarrito(producto) {
     `;
     listaCarrito.appendChild(row);
     guardarLocalStorage(producto);
+    carritoSend();
+    actualizarCantidad();
 }
 
 

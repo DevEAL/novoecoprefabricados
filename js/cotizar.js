@@ -3,18 +3,74 @@ $(document).ready(function(){
 });
 
 const carritoCot = document.getElementById('product-list');
+const sendCot = document.getElementById('product-list');
+const sendCantidad = document.getElementById('product-list');
 const listaCarritoCot = document.querySelector('.product-list');
 const vaciarCarritoBtnCot = document.querySelector('.vaciar-carrito');
-
+const vaciarListaBtnCot = document.querySelector('.vaciar-lista');
 
 //Listener
 loadEventsCot();
 function loadEventsCot() {
-    carritoCot.addEventListener('click', eliminarProductoCot );
+    carritoCot.addEventListener('click', eliminarProductoCot);
+    sendCot.addEventListener('click', selectColor);
+    sendCantidad.addEventListener('click', selectCantidad);
     vaciarCarritoBtnCot.addEventListener('click',vaciarCarritoCot);
+    vaciarListaBtnCot.addEventListener('click',vaciarCarritoCot);
     document.addEventListener('DOMContentLoaded',leerLocalStorage);
 }
 
+function selectColor(e) {
+    let color,
+        colorTarget,
+        idTarget,
+        idObtener;
+    let sendProducto = JSON.parse(localStorage.getItem('sendProductos'));
+    if(e.target.classList.contains('selected')){
+        colorTarget = e.target;
+        color = colorTarget.getAttribute('data-value');
+        idTarget = colorTarget.parentElement.parentElement.parentElement.parentElement;
+        idObtener = idTarget.querySelector('select').getAttribute('id');
+        sendProducto.forEach((producto, index) => {
+            if(producto.id === idObtener) {
+                producto.color = color;
+                sendProducto.splice(index, 1, producto);
+            }
+        })
+        localStorage.setItem('sendProductos', JSON.stringify(sendProducto));
+    }
+}
+
+function selectCantidad(e) {
+    let cantidad,
+        cantidadTarget,
+        idTarget,
+        idObtener;
+    let sendProducto = JSON.parse(localStorage.getItem('sendProductos'));
+    if(e.target.classList.contains('cantselector')){
+        cantidadTarget = e.target;
+        cantidadTarget.addEventListener('change',function(){
+            cantidad = cantidadTarget.value;
+            idTarget = cantidadTarget;
+            idObtener = idTarget.getAttribute('data-id');
+            sendProducto.forEach((producto, index) => {
+                if(producto.id === idObtener) {
+                    producto.cantidad = cantidad;
+                    sendProducto.splice(index, 1, producto);
+                }
+            })
+            localStorage.setItem('sendProductos', JSON.stringify(sendProducto));
+            console.log(idObtener);
+        })
+    }
+}
+
+function actualizarCantidad() {
+    let productosLS = obtenerLocalStorage();
+    let counter = document.querySelector('.quantity');
+    let setCounter = productosLS.length;
+    counter.innerHTML= setCounter;
+}
 
 function eliminarProductoCot(e) {
     let producto,
@@ -38,14 +94,23 @@ function eliminarProductoCot(e) {
         })
     }
     eliminarProductoLocalStorage(productoId);
+    eliminarProductoSend(productoId);
+    actualizarCantidad();
 }
 
 function vaciarCarritoCot(e) {
     e.preventDefault();
-    while(listaCarrito.firstChild) {
-        listaCarrito.removeChild(listaCarrito.firstChild);
+    while(listaCarritoCot.firstChild) {
+        listaCarritoCot.removeChild(listaCarritoCot.firstChild);
     }
+    vaciarLocalStorage();
+    actualizarCantidad();
     return false;
+}
+
+function vaciarLocalStorage() {
+    localStorage.removeItem('productos');
+    localStorage.removeItem('sendProductos');
 }
 
 function guardarLocalStorage(producto) {
@@ -68,6 +133,7 @@ function obtenerLocalStorage() {
 function leerLocalStorage() {
     let productosLS;
     productosLS = obtenerLocalStorage();
+    
     productosLS.forEach((producto) => {
         const row = document.createElement('div');
         row.className = "row cot-product";
@@ -78,42 +144,43 @@ function leerLocalStorage() {
         <div class="col-md-3 cot-name">${producto.nombre}</div>
         <div class="col-md-4 cot-description">${producto.descripcion}</div>
         <div class="col-md-1 cot-color">
-            <select class="colorselector">
-                <option value="gris" data-color="#ABABA9">gris</option>
-                <option value="tierra" data-color="#695850">tierra</option>
-                <option value="ocre" data-color="#96723A">ocre</option>
-                <option value="rojo" data-color="#7B2A2F">rojo</option>
-                <option value="negro" data-color="#332A2F">negro</option>
-                <option value="naranja" data-color="#925831">naranja</option>
-                <option value="verde" data-color="#566A28">verde</option>
-                <option value="azul" data-color="#456780">azul</option>
+            <select id="${producto.id}" class="colorselector">
+                
             </select>
         </div>
         <div class="col-md-1 cot-cantidad">
-            <select class="cantselector">
-                <option value="-49">-49</option>
-                <option value="+50"> +50 </option>
-                <option value="+100">+100</option>
-                <option value="+200">+200</option>
-                <option value="+300">+300</option>
-                <option value="+400">+400</option>
+            <select data-id="${producto.id}" class="cantselector">
+                <option class="catOption" value="-49">-49</option>
+                <option class="catOption" value="+50"> +50 </option>
+                <option class="catOption" value="+100">+100</option>
+                <option class="catOption" value="+200">+200</option>
+                <option class="catOption" value="+300">+300</option>
+                <option class="catOption" value="+400">+400</option>
             </select>
         </div>
         <div class="col-md-1 cot-delete">
             <button data-id="${producto.id}" class="borrar-producto"><i data-id="${producto.id}" class="fas fa-times borrar-producto-2" ></i></button>
         </div>
-    `;
-    document.querySelector('.product-list').appendChild(row);
-    })
+        `;
+        let colores = '';
+        document.querySelector('.product-list').appendChild(row);
+        producto.color.forEach((datacolor, index) => {
+            colores += `
+                <option value="${datacolor}" data-color="${producto.hexa[index]}">gris</option>
+            `;
+            document.getElementById(`${producto.id}`).innerHTML = colores;
+        });
+
+    });
 }
 
-function eliminarProductoLocalStorage(productoId) {
-    let productosLS;
-    productosLS = obtenerLocalStorage();
-    productosLS.forEach((productoLS , index) => {
-        if(productoLS.id === productoId) {
-            productosLS.splice(index, 1);
+function eliminarProductoSend(productoId) {
+    let sendProductos;
+    sendProductos = JSON.parse(localStorage.getItem('sendProductos'));
+    sendProductos.forEach((sendProducto , index) => {
+        if(sendProducto.id === productoId) {
+            sendProductos.splice(index, 1);
         }
     });
-    localStorage.setItem('productos', JSON.stringify(productosLS));
+    localStorage.setItem('sendProductos', JSON.stringify(sendProductos));
 }

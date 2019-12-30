@@ -92,7 +92,6 @@ $(document).ready(function(){
           '<img src="img/svg/right-arrow-icon.svg" alt="">'
         ]
     });
-
 });
 
 const productos3 = document.querySelector('body');

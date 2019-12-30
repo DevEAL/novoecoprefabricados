@@ -66,7 +66,6 @@ function loadEvents() {
     document.addEventListener('DOMContentLoaded',leerLocalStorage);
 }
 
-
 function eliminarProducto(e) {
     let producto,
     productoId;
@@ -89,6 +88,14 @@ function eliminarProducto(e) {
         })
     }
     eliminarProductoLocalStorage(productoId);
+    actualizarCantidad();
+}
+
+function actualizarCantidad() {
+    let productosLS = obtenerLocalStorage();
+    let counter = document.querySelector('.quantity');
+    let setCounter = productosLS.length;
+    counter.innerHTML= setCounter;
 }
 
 function vaciarCarrito(e) {
@@ -96,6 +103,8 @@ function vaciarCarrito(e) {
     while(listaCarrito.firstChild) {
         listaCarrito.removeChild(listaCarrito.firstChild);
     }
+    vaciarLocalStorage();
+    actualizarCantidad();
     return false;
 }
 
@@ -128,6 +137,9 @@ function leerLocalStorage() {
     `;
     listaCarrito.appendChild(row);
     })
+    let counter = document.querySelector('.quantity');
+    let setCounter = productosLS.length;
+    counter.innerHTML= setCounter;
 }
 
 function eliminarProductoLocalStorage(productoId) {
@@ -139,6 +151,11 @@ function eliminarProductoLocalStorage(productoId) {
         }
     });
     localStorage.setItem('productos', JSON.stringify(productosLS));
+}
+
+function vaciarLocalStorage() {
+    localStorage.removeItem('productos');
+    localStorage.removeItem('sendProductos');
 }
 
 const formulario = document.getElementById('formularioContacto');
