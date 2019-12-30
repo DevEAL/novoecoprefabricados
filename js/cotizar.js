@@ -184,3 +184,31 @@ function eliminarProductoSend(productoId) {
     });
     localStorage.setItem('sendProductos', JSON.stringify(sendProductos));
 }
+
+const cotizador = document.getElementById('formularioCotizar');
+cotizador.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let datos = new FormData(cotizador);
+    let productos = JSON.parse(localStorage.getItem('sendProductos'));
+    let array = {
+        "name" : datos.get('nombreCot'),
+        "email" : datos.get('correoCot'),
+        "phone" : datos.get('telefonoCot'),
+        "productos": [productos]
+    }
+
+    console.log(array);
+
+    // fetch('http://novoecoprefabricados.com/Api/public/Api/Contact/Post',{
+    //     method: 'POST',
+    //     body: JSON.stringify(array),
+    //     headers: {
+    //         'Content-Type':'aplication/json'
+    //     }
+    // })
+    // .then(res => res.json())
+    // .then(data => {
+    //     array = {}
+    //     console.log('Enviado Correctamente');
+    // });
+})

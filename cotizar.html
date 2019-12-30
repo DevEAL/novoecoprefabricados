@@ -106,7 +106,7 @@
             <div class="buttons">
                 <button class="btn-novo-three">Seguir viendo</button>
                 <button class="btn-novo-three vaciar-lista">Vaciar Carrito</button>
-                <button class="btn-novo-one">Cotizar</button>
+                <button class="btn-novo-one" data-toggle="modal" data-target="#cotizarModal">Cotizar</button>
             </div>
         </div>
     </div>
@@ -195,18 +195,13 @@
                     <a href="">Cotizar</a>
                 </div>
                 <div class="col-12 social">
-                    
                     <a href="#"><img class="social-icon" src="img/svg/facebook-icon.svg" alt=""></a>
-                
                     <a href="#"><img class="social-icon" src="img/svg/twitter-icon.svg" alt=""></a>
-                
                     <a href="#"><img class="social-icon" src="img/svg/instagram-icon.svg" alt=""></a>
-                
                     <a class="reciclados-footer" href="https://recicladosindustriales.co" target="_blank">
                         <span>Una marca de</span>
                         <img id="logo-reciclados" class="" src="img/svg/reciclados-wg-logo.svg" alt="">
                     </a>
-    
                 </div>
                 <div class="col-12 email">
                     <p><img src="img/svg/mail-icon.svg" alt=""> info@novoecoprefabricados.com</p>
@@ -221,6 +216,42 @@
             <p>Copyright © 2019 All Right Reserved. Powered By En Algún Lugar</p>
         </div>
     </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="cotizarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Datos del cotizante</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formularioCotizar">
+                        <div class="form-group">
+                            <label for="nombreCot">Nombre:</label>
+                            <input type="text" class="form-control" name="nombreCot" id="nombreCot" aria-describedby="emailHelp" placeholder="Escriba su nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="correoCot">Correo:</label>
+                            <input type="email" class="form-control" name="correoCot" id="correoCot" placeholder="Escriba su correo">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefonoCot">Telefono:</label>
+                            <input type="number" class="form-control" name="telefonoCot" id="telefonoCot" placeholder="Escriba su telefono">
+                        </div>
+                        <button type="button" class="btn btn-cerrar" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-cotizar">Enviar</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-cerrar" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-cotizar">Enviar</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

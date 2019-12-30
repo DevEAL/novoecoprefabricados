@@ -35,6 +35,34 @@ h2,h3,p{
     }
 }
 
+.btn-cotizar{
+    font-size: 18px;
+    background: $green-novo;
+    color: #fff;
+    text-transform: uppercase;
+    transition: .5s;
+    border-radius: 2%;
+    &:hover{
+        background: $green-novo2;
+        text-decoration: none;
+        color: #fff;
+    }
+}
+
+.btn-cerrar{
+    font-size: 18px;
+    border: 1px solid $gray-novo3;
+    color: $gray-novo3;
+    text-transform: uppercase;
+    transition: .5s;
+    border-radius: 2%;
+    &:hover{
+        background: #C3423F;
+        text-decoration: none;
+        color: #fff;
+    }
+}
+
 .btn-novo-one{
     background: $green-novo;
     color: #fff;
@@ -120,7 +148,6 @@ nav{
                     }
                     .cot-box{
                         position: absolute;
-                        // background: $gray-novo4;
                         background: #fff;
                         border: 1px solid $green-novo;
                         padding:1rem;
