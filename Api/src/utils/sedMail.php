@@ -6,11 +6,12 @@ use PHPMailer\PHPMailer\Exception;
   class SendMail{
     static function EnviarCorreo($asunto, $body){
 
-        $db = new Entity('nv_Parameters');
-        $db->select('nv_value')
+        $db = new Entity('nv_parameters');
+        $db->select('nv_value as value')
            ->where('nv_name = "Email_contacto" AND nv_status = 1');
         $sth = $db->execute();
         $email = $sth->fetch(PDO::FETCH_OBJ);
+
         $mail = new PHPMailer(true);
         try {
             //Server settings
@@ -23,7 +24,7 @@ use PHPMailer\PHPMailer\Exception;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
             $mail->Port       = 587;                                    // TCP port to connect to
             //Recipients
-            $mail->setFrom('sendohlala@gmail.com', 'Admin Portal');
+            $mail->setFrom('sendohlala@gmail.com', 'Admin Web');
             // $mail->addAddress('ohlalaemprende@gmail.com');     // Add a recipient
             $mail->addAddress($email->value);             // Name is optional
             // $mail->addAddress('desarrollo@enalgunlugarestudio.com');

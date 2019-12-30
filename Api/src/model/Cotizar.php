@@ -20,23 +20,34 @@ class ModelCotizar {
     public function Insert($request) {
 
         $body = $request->getParsedBody();
-
-        $db = new Entity('nv_cotizar');
+        $productos = json_encode($body['productos']);
+        print_r($body['productos']);
+        $db = new Entity('nv_registro');
          try {
-            $arrayBody = array(
-                'nv_name' => "'{$body['name']}'",
-                'nv_color' => "'{$body['color']}'",
-                'nv_cantidad' => "'{$body['cantidad']}'",
-                'nv_idProducto' => "'{$body['idProducto']}'",
+            $arrayRegistro = array(
+                'nv_CantidadProductos' => count($body)
             );
 
-            $db->Insert($arrayBody);
+            $db->Insert($arrayRegistro);
             $id = $db->execute_id();
+
+            foreach ($productos as $key => $value) {
+                $arrayBody = array(
+                    'nv_name' => "'{$body[$key]['name']}'",
+                    'nv_color' => "'{$body[$key]['color']}'",
+                    'nv_cantidad' => "'{$body[$key]['cantidad']}'",
+                    'nv_idProducto' => "'{$body[$key]['idProducto']}'",
+                    'nv_idRegistro' => "'{$id}'",
+                );
+                $db->table_name('nv_cotizar');
+                $db->Insert($arrayBody);
+                $db->execute();
+            }
 
             $asunto = 'Formulario Promoción' . $id;
 
-            $template = CrearHTML::Html($arrayBody, $asunto, 'cotizar');
-            print_r($template);
+            $template = CrearHTML::Html($body, $asunto, 'cotizar');
+            
             if (empty($template)) {
                 return array( 'template' => 'Template error' );
             } else {

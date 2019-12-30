@@ -23,13 +23,13 @@ class ModelContact {
 
         $db = new Entity('nv_contact');
          try {
-            
+
             $arrayBody = array(
                 'nv_name' => "'{$body['name']}'",
                 'nv_email' => "'{$body['email']}'",
                 'nv_phone' => "'{$body['phone']}'",
                 'nv_company' => "'{$body['company']}'",
-                'nv_position' => "'{$body['phone']}'",
+                'nv_position' => "'{$body['position']}'",
                 'nv_message' => "'{$body['message']}'"
             );
 
@@ -37,7 +37,6 @@ class ModelContact {
             $id = $db->execute_id();
 
             $asunto = 'Contacto' . $id;
-
             $template = CrearHTML::Html($body, $asunto, 'contact');
 
             if (empty($template)) {

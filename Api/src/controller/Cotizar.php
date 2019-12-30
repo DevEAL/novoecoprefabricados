@@ -21,9 +21,7 @@ class ControllerCotizar {
         }
     }
     public function Insert($request) {
-        $rsp = array('greeting' => 'hello test');
-        $response = PrintJson::print(200, 'Hello', 'Test', $rsp);
-        // $response = $this->model->Insert($request);
+        $response = $this->model->Insert($request);
 
         if (empty($response)) {
             return 203;

@@ -7,6 +7,29 @@ class CrearHTML {
             <html>
               <head>
                 <meta charset=utf-8"/>
+                <style>
+                table {
+                  width:60%;
+                }
+                table, th, td {
+                  border: 1px solid #c0c0c0;
+                  border-collapse: collapse;
+                }
+                th, td {
+                  padding: 15px;
+                  text-align: left;
+                }
+                table#t01 tr:nth-child(even) {
+                  background-color: #eee;
+                }
+                table#t01 tr:nth-child(odd) {
+                 background-color: #fff;
+                }
+                table#t01 th {
+                  background-color: #8fb52b;
+                  color: white;
+                }
+                </style>
               </head>
               <body>
             ';
@@ -17,13 +40,30 @@ class CrearHTML {
             </div>
             ';
         if ($option == 'cotizar') {
+
+          $tabla='';
+          foreach ($body as $key => $value) {
+
+            $tabla1 = '
+              <tr>
+                <td>'.$body[$key]['name'].'</td>
+                <td>'.$body[$key]['color'].'</td>
+                <td>'.$body[$key]['cantidad'].'</td>
+              </tr>
+            ';
+            $tabla .= $tabla1;
+          }
           $HTMLSection =
             '
             <div>
-              <p>Nombre del Producto: <span>'.$body['nv_name'].'</span></p>
-              <p>Color: <span>'.$body['nv_color'].'</span></p>
-              <p>Cantidad: <span>'.$body['nv_cantidad'].'</span></p>
-              <p>id Producto: <span>'.$body['nv_idProducto'].'</span></p>
+              <table id="t01">
+                <tr>
+                  <th>Nombre</th>
+                  <th>Color</th>
+                  <th>Cantidad</th>
+                </tr>
+                '.$tabla.'
+              </table>
             </div>
             ';
         } else {
