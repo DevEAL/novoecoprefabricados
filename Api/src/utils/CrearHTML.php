@@ -29,6 +29,9 @@ class CrearHTML {
                   background-color: #8fb52b;
                   color: white;
                 }
+                .titulo{
+                  text-align: center !important;
+                }
                 </style>
               </head>
               <body>
@@ -41,14 +44,16 @@ class CrearHTML {
             ';
         if ($option == 'cotizar') {
 
+          $productos = $body['productos'];
+          
           $tabla='';
-          foreach ($body as $key => $value) {
+          foreach ($productos as $key => $value) {
 
             $tabla1 = '
               <tr>
-                <td>'.$body[$key]['name'].'</td>
-                <td>'.$body[$key]['color'].'</td>
-                <td>'.$body[$key]['cantidad'].'</td>
+                <td>'.$productos[$key]['nombre'].'</td>
+                <td>'.$productos[$key]['color'].'</td>
+                <td>'.$productos[$key]['cantidad'].'</td>
               </tr>
             ';
             $tabla .= $tabla1;
@@ -57,6 +62,24 @@ class CrearHTML {
             '
             <div>
               <table id="t01">
+                <tr>
+                  <th class="titulo" colspan="3">Datos Principales</th>
+                </tr>
+                <tr>
+                  <td>Nombre</td>
+                  <td colspan="2">'.$body['name'].'</td>
+                </tr>
+                <tr>
+                  <td>Email</td>
+                  <td colspan="2">'.$body['email'].'</td>
+                </tr>
+                <tr>
+                  <td>Telefono</td>
+                  <td colspan="2">'.$body['phone'].'</td>
+                </tr>
+                <tr>
+                  <th class="titulo" colspan="3">Productos Cotizados</th>
+                </tr>
                 <tr>
                   <th>Nombre</th>
                   <th>Color</th>

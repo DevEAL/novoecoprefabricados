@@ -20,7 +20,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg fixed-top green-nav">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.html">
             <img src="img/svg/novo-fullw-logo.svg" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,10 +101,9 @@
         <div class="row products">
             <div id="product-list" class="col-12 product-list">
 
-                
             </div>
             <div class="buttons">
-                <button class="btn-novo-three">Seguir viendo</button>
+                <button class="btn-novo-three"><a href="productos.html">Seguir viendo</a></button>
                 <button class="btn-novo-three vaciar-lista">Vaciar Carrito</button>
                 <button class="btn-novo-one" data-toggle="modal" data-target="#cotizarModal">Cotizar</button>
             </div>
@@ -228,19 +227,26 @@
                 </button>
                 </div>
                 <div class="modal-body">
-                    <form id="formularioCotizar">
+                    <form id="formularioCotizar" class="needs-validation" novalidate>
                         <div class="form-group">
                             <label for="nombreCot">Nombre:</label>
-                            <input type="text" class="form-control" name="nombreCot" id="nombreCot" aria-describedby="emailHelp" placeholder="Escriba su nombre">
+                            <input type="text" class="form-control" name="nombreCot" id="nombreCot" aria-describedby="emailHelp" placeholder="Escriba su nombre" required>
+                            <div class="invalid-feedback">Falta el nombre</div>
                         </div>
                         <div class="form-group">
                             <label for="correoCot">Correo:</label>
-                            <input type="email" class="form-control" name="correoCot" id="correoCot" placeholder="Escriba su correo">
+                            <input type="email" class="form-control" name="correoCot" id="correoCot" placeholder="Escriba su correo" required>
+                            <div class="invalid-feedback">Falta el correo</div>
                         </div>
                         <div class="form-group">
                             <label for="telefonoCot">Telefono:</label>
-                            <input type="number" class="form-control" name="telefonoCot" id="telefonoCot" placeholder="Escriba su telefono">
+                            <input type="number" class="form-control" name="telefonoCot" id="telefonoCot" placeholder="Escriba su telefono" required>
+                            <div class="invalid-feedback">Falta el telefono</div>
                         </div>
+                        <div style="display: none;" class="alert alert-success" role="alert">Se ha enviado el mensaje correctamente.</div>
+                        <div style="display: none;" class="alert alert-danger" role="alert">Error al enviar. Intentar más tarde.</div>
+                        <div id="emptyInputs" style="display: none;" class="alert alert-warning" role="alert">Hay campos vacios</div>
+                        <div id="noProducts" style="display: none;" class="alert alert-warning" role="alert">No hay productos a cotizar.</div >
                         <button type="button" class="btn btn-cerrar" data-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-cotizar">Enviar</button>
                     </form>

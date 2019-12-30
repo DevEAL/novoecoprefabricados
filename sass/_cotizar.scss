@@ -82,3 +82,18 @@
         }
     }
 }
+
+.btn-novo-three{
+    a{
+        color: $gray-novo3;
+        text-decoration: none;
+        transition: .5s;
+    }
+    &:hover{
+        a{ color: #fff; }
+    }
+}
+
+.vaciar-lista {
+    &:hover{ background: #C3423F; }
+}

@@ -832,6 +832,16 @@ footer {
     .cotizador .products .buttons button {
       margin: 0 .4rem; }
 
+.btn-novo-three a {
+  color: #4d4d4d;
+  text-decoration: none;
+  transition: .5s; }
+.btn-novo-three:hover a {
+  color: #fff; }
+
+.vaciar-lista:hover {
+  background: #C3423F; }
+
 @media (max-width: 1024px) {
   nav.navbar {
     padding: 2rem; }

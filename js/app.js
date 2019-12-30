@@ -172,14 +172,13 @@ formulario.addEventListener('submit', (e) => {
         "position" : datos.get('position'),
         "message" : datos.get('message')
     }
-
     console.log(array);
 
     fetch('http://novoecoprefabricados.com/Api/public/Api/Contact/Post',{
         method: 'POST',
         body: JSON.stringify(array),
         headers: {
-            'Content-Type':'aplication/json'
+            'Content-Type':'application/json'
         }
     })
     .then(res => res.json())

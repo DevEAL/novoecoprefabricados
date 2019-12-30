@@ -1,5 +1,23 @@
 $(document).ready(function(){
     $('.colorselector').colorselector();
+
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
 });
 
 const carritoCot = document.getElementById('product-list');
@@ -60,7 +78,6 @@ function selectCantidad(e) {
                 }
             })
             localStorage.setItem('sendProductos', JSON.stringify(sendProducto));
-            console.log(idObtener);
         })
     }
 }
@@ -194,21 +211,49 @@ cotizador.addEventListener('submit', (e) => {
         "name" : datos.get('nombreCot'),
         "email" : datos.get('correoCot'),
         "phone" : datos.get('telefonoCot'),
-        "productos": [productos]
+        "productos": productos
     }
 
-    console.log(array);
-
-    // fetch('http://novoecoprefabricados.com/Api/public/Api/Contact/Post',{
-    //     method: 'POST',
-    //     body: JSON.stringify(array),
-    //     headers: {
-    //         'Content-Type':'aplication/json'
-    //     }
-    // })
-    // .then(res => res.json())
-    // .then(data => {
-    //     array = {}
-    //     console.log('Enviado Correctamente');
-    // });
+    if(!array.name  || !array.email || !array.phone) {
+        // Campos Vacios
+        document.querySelector('#emptyInputs').setAttribute("style", "display: block;");
+        setTimeout(function(){ 
+            document.querySelector('#emptyInputs').setAttribute("style", "display: none;");
+        }, 3000);
+    } else if(productos == null) {
+        //Sin productos
+        document.querySelector('#noProducts').setAttribute("style", "display: block;");
+        setTimeout(function(){ 
+            document.querySelector('#noProducts').setAttribute("style", "display: none;");
+        }, 3000);
+    } else {
+        // Enviado correcto
+        fetch('http://localhost:8080/dev_novo/Api/public/Api/cotizar/Post',{
+            method: 'POST',
+            body: JSON.stringify(array),
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            array = {}
+            document.querySelector('.alert-success').setAttribute("style", "display: block;");
+            setTimeout(function(){ 
+                vaciarCarritoCot(e);
+                document.querySelector('.alert-success').setAttribute("style", "display: none;");
+                $("#cotizarModal").modal('hide');
+                $('body').removeClass('modal-open');
+            }, 3000);
+            console.log('Enviado Correctamente');
+        })
+        .catch(function(error) {
+            // Error al enviar
+            document.querySelector('.alert-danger').setAttribute("style", "display: block;");
+            setTimeout(function(){ 
+                document.querySelector('.alert-danger').setAttribute("style", "display: none;");
+            }, 3000);
+            console.log('Hubo un problema con la petición Fetch:' + error.message);
+        });
+    }
 })
