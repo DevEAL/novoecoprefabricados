@@ -21,7 +21,7 @@ $app->group('/Api', function () use ($app) {
     $this->map(['POST'], '/cotizar/Post', function(Request $request, Response $response){
         $Controller = new ControllerCotizar();
         $response = $Controller->Insert($request);
-        print_r("Entra");
+        
         if ($response === false) {
             PrintJson::print(404);
         } else if (is_array($response)) {

@@ -11,7 +11,7 @@ class ModelCotizar {
             $response = $sth->fetchAll(PDO::FETCH_ASSOC);
 
             return $response;
-        } catch (PDOExcenvion $e) {
+        } catch (PDOException $e) {
             echo $e->getMessage();
             return false;
         }
@@ -20,12 +20,17 @@ class ModelCotizar {
     public function Insert($request) {
 
         $body = $request->getParsedBody();
-        $productos = json_encode($body['productos']);
-        print_r($body['productos']);
+
+        $productos = $body['productos'];
+
         $db = new Entity('nv_registro');
          try {
+
             $arrayRegistro = array(
-                'nv_CantidadProductos' => count($body)
+                'nv_CantidadProductos' => count($productos),
+                'nv_name' => "'{$body['name']}'",
+                'nv_email' => "'{$body['email']}'",
+                'nv_phone' => "'{$body['phone']}'"
             );
 
             $db->Insert($arrayRegistro);
@@ -33,10 +38,10 @@ class ModelCotizar {
 
             foreach ($productos as $key => $value) {
                 $arrayBody = array(
-                    'nv_name' => "'{$body[$key]['name']}'",
-                    'nv_color' => "'{$body[$key]['color']}'",
-                    'nv_cantidad' => "'{$body[$key]['cantidad']}'",
-                    'nv_idProducto' => "'{$body[$key]['idProducto']}'",
+                    'nv_name' => "'{$productos[$key]['name']}'",
+                    'nv_color' => "'{$productos[$key]['color']}'",
+                    'nv_cantidad' => "'{$productos[$key]['cantidad']}'",
+                    'nv_idProducto' => "'{$productos[$key]['idProducto']}'",
                     'nv_idRegistro' => "'{$id}'",
                 );
                 $db->table_name('nv_cotizar');
@@ -47,7 +52,7 @@ class ModelCotizar {
             $asunto = 'Formulario Promoción' . $id;
 
             $template = CrearHTML::Html($body, $asunto, 'cotizar');
-            
+
             if (empty($template)) {
                 return array( 'template' => 'Template error' );
             } else {
@@ -57,7 +62,7 @@ class ModelCotizar {
                     return array( 'email' => 'Template de envio de correo' );
                 }
             }
-         } catch (PDOExcenvion $e){
+         } catch (PDOException $e){
             echo $e->getMessage();
             return false;
          }
