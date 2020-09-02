@@ -1,0 +1,69 @@
+[14-Mar-2020 11:27:14 America/Boise] Slim Application Error:
+Type: PDOException
+Code: 42000
+Message: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Connell','Divide','Tennessee')' at line 1
+File: /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/src/config/db.php
+Line: 70
+Trace: #0 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/src/config/db.php(70): PDOStatement->execute(Array)
+#1 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/src/model/Contact.php(37): Entity->execute_id()
+#2 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/src/controller/Contact.php(24): ModelContact->Insert(Object(Slim\Http\Request))
+#3 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/src/routes/routes.php(49): ControllerContact->Insert(Object(Slim\Http\Request))
+#4 [internal function]: Closure->{closure}(Object(Slim\Http\Request), Object(Slim\Http\Response), Array)
+#5 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php(40): call_user_func(Object(Closure), Object(Slim\Http\Request), Object(Slim\Http\Response), Array)
+#6 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/Route.php(281): Slim\Handlers\Strategies\RequestResponse->__invoke(Object(Closure), Object(Slim\Http\Request), Object(Slim\Http\Response), Array)
+#7 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php(117): Slim\Route->__invoke(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#8 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/Route.php(268): Slim\Route->callMiddlewareStack(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#9 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/App.php(503): Slim\Route->run(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#10 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php(117): Slim\App->__invoke(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#11 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/App.php(392): Slim\App->callMiddlewareStack(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#12 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/App.php(297): Slim\App->process(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#13 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/public/index.php(26): Slim\App->run()
+#14 {main}
+View in rendered output by enabling the "displayErrorDetails" setting.
+
+[23-Apr-2020 05:51:31 America/Boise] Slim Application Error:
+Type: PDOException
+Code: 42000
+Message: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Amore','jnz24@nifty.com','(019) 792-7542','Reinger - Kub','hard drive','needs-ba' at line 1
+File: /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/src/config/db.php
+Line: 70
+Trace: #0 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/src/config/db.php(70): PDOStatement->execute(Array)
+#1 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/src/model/Contact.php(37): Entity->execute_id()
+#2 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/src/controller/Contact.php(24): ModelContact->Insert(Object(Slim\Http\Request))
+#3 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/src/routes/routes.php(49): ControllerContact->Insert(Object(Slim\Http\Request))
+#4 [internal function]: Closure->{closure}(Object(Slim\Http\Request), Object(Slim\Http\Response), Array)
+#5 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php(40): call_user_func(Object(Closure), Object(Slim\Http\Request), Object(Slim\Http\Response), Array)
+#6 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/Route.php(281): Slim\Handlers\Strategies\RequestResponse->__invoke(Object(Closure), Object(Slim\Http\Request), Object(Slim\Http\Response), Array)
+#7 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php(117): Slim\Route->__invoke(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#8 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/Route.php(268): Slim\Route->callMiddlewareStack(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#9 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/App.php(503): Slim\Route->run(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#10 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php(117): Slim\App->__invoke(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#11 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/App.php(392): Slim\App->callMiddlewareStack(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#12 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/App.php(297): Slim\App->process(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#13 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/public/index.php(26): Slim\App->run()
+#14 {main}
+View in rendered output by enabling the "displayErrorDetails" setting.
+
+[04-Jun-2020 16:35:11 America/Boise] Slim Application Error:
+Type: PDOException
+Code: 42000
+Message: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Connell - Hodkiewicz','Awesome Concrete Pants','hack')' at line 1
+File: /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/src/config/db.php
+Line: 70
+Trace: #0 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/src/config/db.php(70): PDOStatement->execute(Array)
+#1 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/src/model/Contact.php(37): Entity->execute_id()
+#2 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/src/controller/Contact.php(24): ModelContact->Insert(Object(Slim\Http\Request))
+#3 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/src/routes/routes.php(49): ControllerContact->Insert(Object(Slim\Http\Request))
+#4 [internal function]: Closure->{closure}(Object(Slim\Http\Request), Object(Slim\Http\Response), Array)
+#5 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php(40): call_user_func(Object(Closure), Object(Slim\Http\Request), Object(Slim\Http\Response), Array)
+#6 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/Route.php(281): Slim\Handlers\Strategies\RequestResponse->__invoke(Object(Closure), Object(Slim\Http\Request), Object(Slim\Http\Response), Array)
+#7 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php(117): Slim\Route->__invoke(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#8 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/Route.php(268): Slim\Route->callMiddlewareStack(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#9 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/App.php(503): Slim\Route->run(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#10 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php(117): Slim\App->__invoke(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#11 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/App.php(392): Slim\App->callMiddlewareStack(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#12 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/vendor/slim/slim/Slim/App.php(297): Slim\App->process(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#13 /home1/rxpjfcmy/public_html/novoecoprefabricados/Api/public/index.php(26): Slim\App->run()
+#14 {main}
+View in rendered output by enabling the "displayErrorDetails" setting.
+

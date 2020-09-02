@@ -64,6 +64,10 @@ function agregarProducto(e){
         e.preventDefault();
         const producto = e.target.parentElement.parentElement;
         leerDatosProducto(producto);
+        $("#productoAgregado").addClass("agregado");
+        setTimeout(function(){ 
+            $("#productoAgregado").removeClass("agregado");
+        }, 4000);
     };
 }
 

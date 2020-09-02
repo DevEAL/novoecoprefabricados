@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
     getGET = () => {
         let loc = document.location.href;
         if(loc.indexOf('?')>0) {
@@ -22,13 +22,15 @@ $(document).ready(function(){
         .then((data) =>{ 
             let obtId = getGET();
             let helper = data[obtId.id];
-            // console.log(helper.description);
             $('#product-title').text(`${helper.name}`);
 
             let cardProduct = '';
             cardProduct += `
             <div class="col-lg-6 description">
                 <h4>Descripción</h4>
+                <div class="product-arrow-left">
+                    <a href="productos.html#products"><img src="img/svg/left-arrow-icon.svg" alt="volver atrás"></a>
+                </div>
                 <p>${helper.description}</p>
                 <ul>
                     <li><span>Textura:</span> ${helper.texture}</li>
@@ -39,7 +41,11 @@ $(document).ready(function(){
                 <a class="btn-novo-one agregar-carrito" href="#" data-id="${helper.id}">Agregar a cotizar</a>
             </div>
             <div class="col-lg-6 product">
-                <img class="product-img" src="img/products/${helper.img}" alt="">
+                <img id="product-img" class="product-img" src="img/products/${helper.img}" alt="">
+                <p>Colores:</p>
+                <div id="colors" class="colors">
+
+                </div>
                 <hr>
                 <div class="features">
                     <div class="feature-item" data-toggle="tooltip" data-placement="top" data-html="true" title=" Peso unitario </br> Kilogramos / Unidades">
@@ -55,29 +61,26 @@ $(document).ready(function(){
                         ${helper.performance}
                     </div>
                 </div>
-                <p>Colores:</p>
-                <div class="colors">
-                    <a class="color" href="#" style="background: #ABABA9;"></a>
-                    <a class="color" href="#" style="background: #695850;"></a>
-                    <a class="color" href="#" style="background: #96723A;"></a>
-                    <a class="color" href="#" style="background: #7B2A2F;"></a>
-                    <a class="color" href="#" style="background: #332A2F;"></a>
-                    <a class="color" href="#" style="background: #925831;"></a>
-                    <a class="color" href="#" style="background: #566A28;"></a>
-                    <a class="color" href="#" style="background: #456780;"></a>
-                </div>
                 <p class="note">*Los colores y texturas se aproximan al producto que está en nuestro portafolio.</p>
             </div>
             `;
             document.getElementById('product-content').innerHTML = cardProduct;
             
+            let colors = '';
+            let carr = helper.hexa;
+            carr.forEach((element, index) => {
+                colors += `
+                    <div onclick="cambiarImagen('${helper.carousel[index]}')" class="color" style="background: ${element};"></div>
+                `;
+                document.getElementById('colors').innerHTML = colors;
+            });
+            
             $(function(){
                 $('[data-toggle="tooltip"]').tooltip()
-            })
+            });
         });
     }
     cargarJSON();
-
 
     $('.owl-proyects').owlCarousel({
         items:4,
@@ -92,6 +95,7 @@ $(document).ready(function(){
           '<img src="img/svg/right-arrow-icon.svg" alt="">'
         ]
     });
+
 });
 
 const productos3 = document.querySelector('body');
@@ -100,30 +104,80 @@ function loadEvents() {
     productos3.addEventListener('click', agregarProducto);
 }
 
+
+function cambiarImagen(clr) {
+    document.getElementById("product-img").setAttribute("src",clr);
+}
+
 //Funciones
 function agregarProducto(e){
     if(e.target.classList.contains('agregar-carrito')) {
         e.preventDefault();
         leerDatosProducto();
+        $("#productoAgregado").addClass("agregado");
+        setTimeout(function(){ 
+            $("#productoAgregado").removeClass("agregado");
+        }, 3000);
     };
 }
 
 function leerDatosProducto() {
-    const infoProducto = {
-        imagen: document.querySelector('.product-img').src,
-        titulo: document.querySelector('h1').textContent,
-        id: document.querySelector('a.agregar-carrito').getAttribute('data-id')
+    let id = document.querySelector('a.agregar-carrito').getAttribute('data-id');
+    const traerMiData = () => {
+        const productData = fetch('./products.json')
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) =>{ 
+                data.forEach(element => {
+                    if(element.id === id){
+                        const infoProducto = {
+                            id: element.id,
+                            nombre: element.name,
+                            imagen: element.img,
+                            descripcion: element.description,
+                            color: element.color,
+                            hexa: element.hexa
+                        }
+                        insertarCarrito(infoProducto);
+                    }
+                });
+            });
     }
-    insertarCarrito(infoProducto);
+    traerMiData();
+}
+
+function carritoSend() {
+    let productosLS = JSON.parse(localStorage.getItem('productos'));
+    let sendProducto = [];
+    productosLS.forEach((producto, index) => {
+        let send = {
+            id: producto.id,
+            nombre: producto.nombre,
+            color: 'Gris',
+            cantidad: '-49'
+        }
+        sendProducto.push(send);
+    });
+    localStorage.setItem('sendProductos', JSON.stringify(sendProducto));
+}
+
+function actualizarCantidad() {
+    let productosLS = obtenerLocalStorage();
+    let counter = document.querySelector('.quantity');
+    let setCounter = productosLS.length;
+    counter.innerHTML= setCounter;
 }
 
 function insertarCarrito(producto) {
     const row = document.createElement('tr');
     row.innerHTML = `
-        <td><img src="${producto.imagen}" alt=""></td>
-        <td>${producto.titulo}</td>
+        <td><img src="img/products/${producto.imagen}" alt=""></td>
+        <td>${producto.nombre}</td>
         <td><button data-id="${producto.id}" class="borrar-producto"><i data-id="${producto.id}" class="fas fa-times borrar-producto-2" ></i></button></td>
     `;
     listaCarrito.appendChild(row);
     guardarLocalStorage(producto);
+    carritoSend();
+    actualizarCantidad();
 }

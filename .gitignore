@@ -1,0 +1,7 @@
+# Omitir NPM y Composer
+/node_modules
+# otros omitidos
+hosting
+.htaccess
+*.sql
+*.DS_Store

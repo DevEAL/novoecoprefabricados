@@ -21,6 +21,22 @@
     color: $gray-novo3;
     display: flex;
     align-items: center;
+    .product-arrow-left {
+        width: 5%;
+        position: absolute;
+        left: -3vw;
+        top: 9vw;
+        transition: transform .2s;
+        transition-timing-function: ease-in;
+
+        &:hover {
+            transform: scale(1.5);
+        }
+
+        img:hover {
+            filter: opacity(0.5);
+        }
+    }
     .description{
         text-align: center;
         h4, p, ul{

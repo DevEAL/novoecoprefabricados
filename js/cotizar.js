@@ -1,6 +1,8 @@
 $(document).ready(function(){
     $('.colorselector').colorselector();
 
+    $('.alert').alert();
+
     (function() {
         'use strict';
         window.addEventListener('load', function() {
@@ -36,6 +38,11 @@ function loadEventsCot() {
     vaciarCarritoBtnCot.addEventListener('click',vaciarCarritoCot);
     vaciarListaBtnCot.addEventListener('click',vaciarCarritoCot);
     document.addEventListener('DOMContentLoaded',leerLocalStorage);
+}
+
+function carritoVacio(){
+    let productosLS = obtenerLocalStorage();
+    console.log(productosLS);
 }
 
 function selectColor(e) {
@@ -110,9 +117,16 @@ function eliminarProductoCot(e) {
             info.parentElement.parentElement.parentElement.remove();
         })
     }
+
+    
     eliminarProductoLocalStorage(productoId);
     eliminarProductoSend(productoId);
     actualizarCantidad();
+    let productosLS = obtenerLocalStorage();
+    if(productosLS.length === 0){
+        document.getElementById('text-vacio').setAttribute('style', 'display: block;');
+    }
+    
 }
 
 function vaciarCarritoCot(e) {
@@ -150,7 +164,9 @@ function obtenerLocalStorage() {
 function leerLocalStorage() {
     let productosLS;
     productosLS = obtenerLocalStorage();
-    
+    if(productosLS.length > 0) {
+        document.getElementById('text-vacio').setAttribute("style", "display: none;");
+    }
     productosLS.forEach((producto) => {
         const row = document.createElement('div');
         row.className = "row cot-product";
@@ -167,12 +183,11 @@ function leerLocalStorage() {
         </div>
         <div class="col-md-1 cot-cantidad">
             <select data-id="${producto.id}" class="cantselector">
-                <option class="catOption" value="-49">-49</option>
-                <option class="catOption" value="+50"> +50 </option>
-                <option class="catOption" value="+100">+100</option>
-                <option class="catOption" value="+200">+200</option>
-                <option class="catOption" value="+300">+300</option>
-                <option class="catOption" value="+400">+400</option>
+                <option class="catOption" value="-99">-99</option>
+                <option class="catOption" value="+100"> +100 </option>
+                <option class="catOption" value="+500">+500</option>
+                <option class="catOption" value="+2000">+2000</option>
+                <option class="catOption" value="+5000">+5000</option>
             </select>
         </div>
         <div class="col-md-1 cot-delete">
@@ -228,7 +243,7 @@ cotizador.addEventListener('submit', (e) => {
         }, 3000);
     } else {
         // Enviado correcto
-        fetch('http://localhost:8080/dev_novo/Api/public/Api/cotizar/Post',{
+        fetch('Api/public/Api/cotizar/Post',{
             method: 'POST',
             body: JSON.stringify(array),
             headers: {
@@ -257,3 +272,5 @@ cotizador.addEventListener('submit', (e) => {
         });
     }
 })
+
+

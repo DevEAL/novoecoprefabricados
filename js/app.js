@@ -88,7 +88,19 @@ function eliminarProducto(e) {
         })
     }
     eliminarProductoLocalStorage(productoId);
+    eliminarProductoSend(productoId);
     actualizarCantidad();
+}
+
+function eliminarProductoSend(productoId) {
+    let sendProductos;
+    sendProductos = JSON.parse(localStorage.getItem('sendProductos'));
+    sendProductos.forEach((sendProducto , index) => {
+        if(sendProducto.id === productoId) {
+            sendProductos.splice(index, 1);
+        }
+    });
+    localStorage.setItem('sendProductos', JSON.stringify(sendProductos));
 }
 
 function actualizarCantidad() {
@@ -174,7 +186,7 @@ formulario.addEventListener('submit', (e) => {
     }
     console.log(array);
 
-    fetch('http://novoecoprefabricados.com/Api/public/Api/Contact/Post',{
+    fetch('Api/public/Api/Contact/Post',{
         method: 'POST',
         body: JSON.stringify(array),
         headers: {
@@ -186,4 +198,7 @@ formulario.addEventListener('submit', (e) => {
         array = {}
         console.log('Enviado Correctamente');
     })
-})
+});
+
+const date = new Date();
+document.getElementById('dateCopy').innerHTML = date.getFullYear();

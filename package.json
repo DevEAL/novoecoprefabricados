@@ -1,0 +1,27 @@
+{
+  "name": "novo",
+  "version": "1.0.0",
+  "description": "Novo EcoPrefabricados",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevEAL/novoecoprefabricados.git"
+  },
+  "author": "Jon Tmarz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DevEAL/novoecoprefabricados/issues"
+  },
+  "homepage": "https://github.com/DevEAL/novoecoprefabricados#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.12",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-sass": "^4.1.0"
+  }
+}
